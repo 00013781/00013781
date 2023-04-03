@@ -1,0 +1,27 @@
+extends layout.pug
+
+block content
+    .container 
+        .breadcrumb 
+            a(href="/").active home /
+            a(href="/students").active students /
+            a.non_active #{student.studentId}
+        .single
+            .content
+                .item 
+                    h4 Student ID
+                    .dot
+                    p #{student.studentId}
+                .item 
+                    h4 Student Name
+                    .dot
+                    p #{student.studentName}
+                .item 
+                    h4 Student Birthday
+                    .dot
+                    p #{student.date}
+                .item 
+                    h4 Student Level
+                    .dot
+                    p #{student.level}
+            img(src=student.image ? `/public/uploads/${student.image}` : "https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/no-profile-picture-icon.png", alt="single")

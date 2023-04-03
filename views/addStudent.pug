@@ -1,0 +1,41 @@
+extends layout.pug
+
+block content
+    .container_add 
+        .background
+            .shape
+            .shape
+        form(action=id ? `/addStudent?id=${id}`: '/addStudent' method="POST" enctype="multipart/form-data") 
+            h3 #{edit ? 'Edit student' : 'Add Student'}
+            label(for='studentName') Student Name
+                if(studentName == '')
+                    span required
+            input(type='text', placeholder='Enter student name' name="studentName" value=studentName)
+            label(for='studentId') Student ID
+                if(studentIdValidation)
+                    span student ID must contain 8 numbers
+            input(type='number', placeholder='Enter student id' name="studentId" value=studentId)
+            label(for='date') Student Birthday
+                if(date == '')
+                    span required
+            input(type='date' name="date" value=date)
+            label(for='image') Student Image
+                .optional non-mandatory
+            input(type='file' name="image")
+            label(for='level') Student Level
+                .optional default value - Level 3
+            select(name="level") 
+                option(value="level 3" selected= (level == 'level 3'))  Level 3
+                option(value="level 4" selected= (level == 'level 4'))  Level 4
+                option(value="level 5" selected= (level == 'level 5'))  Level 5 
+                option(value="level 6" selected= (level == 'level 6'))  Level 6
+            button(type="submit").form_submit #{edit ? 'Edit student' : 'Add Student'}
+    if (added)
+        .wrap_modal 
+            .modal 
+                h3 Go to students page
+                .buttons
+                    a.gotoStudents yes
+                    a.create_again no
+
+                    

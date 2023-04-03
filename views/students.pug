@@ -1,0 +1,26 @@
+extends layout.pug
+
+block content
+    .container 
+        .breadcrumb 
+            a(href="/").active home /
+            a.non_active students
+        .search 
+            input(type="number" value=search autofocus onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" placeholder="Search By ID" id="search").search_input
+        .students 
+            each student in students
+                .student_card(data-id=student.id)
+                    img(src=student.image ? `/public/uploads/${student.image}` : "https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/no-profile-picture-icon.png", alt="student_card")
+                    h2 #{student.studentId}
+                    h4 #{student.studentName}
+                    .content 
+                        h5 Student birthday :
+                        p #{student.date}
+                    .content 
+                        h5 Student Level :
+                        p #{student.level}
+                    a(href=`/addStudent?id=${student.id}`).edit <i class="fa-solid fa-pen-to-square"></i>
+                    a(href=`/${student.id}/delete`).delete <i class="fa-solid fa-trash"></i>
+        if(students.length == 0)
+            .null_data 
+                img(src="https://cdn.dribbble.com/userupload/2905353/file/original-2022966da1fc3718d3feddfdc471ae47.png?compress=1&resize=400x300&vertical=top", alt="null_data")
