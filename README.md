@@ -7,27 +7,33 @@ To run this web application locally you must follow the steps indicated below
 1. Close this repository
 
 ```bash
-git clone [repository link]
+git clone https://github.com/00013781/00013781.git
 ```
 
 2. Install dependencies
 
 ```bash
-cd [project folder]
-yarn
+cd 00013781
+npm i express pug
+npm i multer
+npm i nodemon
+npm i crypto
 ```
 
 3. Run the application
 
 ```bash
-yarn dev
+npm run start
 ```
 
 ### web application dependencies list
 
 - express.js
 - pug.js
+- multer
+- nodemon
+- crypto
 
 ### Web application repository on github
 
-[link to github repository]()
+[link to github repository](https://github.com/00013781/00013781)
